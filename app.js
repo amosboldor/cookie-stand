@@ -1,6 +1,6 @@
 'use strict';
 
-var hours = ['6am: ', '7am: ', '8am: ', '9am: ', '10am: ', '11am: ', '12pm: ', '1pm: ', '2pm: ', '3pm: ', '4pm: ', '5pm: ', '6pm: ', '7pm: ', '8pm: '];
+var hours = ['6am: ', '7am: ', '8am: ', '9am: ', '10am: ', '11am: ', '12pm: ', '1pm: ', '2pm: ', '3pm: ', '4pm: ', '5pm: ', '6pm: ', '7pm: '];
 
 var pike = {
   location: '1st and Pike',
@@ -11,13 +11,13 @@ var pike = {
   cookiesSoldPerHour: [],
   totalDailySales: 0,
   genRandCustPerHour: function() {
-    for (var i = 0; i < hours.length; i++) {
+    for (var i = 0; i < hours.length + 1; i++) {
       this.randCustPerHour.push(Math.floor(Math.random() * (this.maxCustPerHour - this.minCustPerHour + 1)) + this.minCustPerHour);
     }
   },
   genCookiesSoldPerHour: function() {
     this.genRandCustPerHour();
-    for (var i = 0; i < hours.length; i++) {
+    for (var i = 0; i < hours.length + 1; i++) {
       this.cookiesSoldPerHour.push(Math.round(this.randCustPerHour[i] * this.avgCookiesPerCust));
     }
   },
