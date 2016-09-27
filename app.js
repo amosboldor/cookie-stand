@@ -5,7 +5,7 @@ var hours = ['6am ', '7am ', '8am ', '9am ', '10am ', '11am ', '12pm ', '1pm ', 
 var tableUl = document.createElement('table');
 document.body.appendChild(tableUl);
 
-function tableHead() {
+function gentableHead() {
   var trEl = document.createElement('tr');
   tableUl.appendChild(trEl);
   var tdEl = document.createElement('td');
@@ -16,12 +16,9 @@ function tableHead() {
     trEl.appendChild(thEl);
   }
   var totalEl = document.createElement('th');
-  totalEl.textContent = 'Totals';
+  totalEl.textContent = 'Daily Location Total';
   trEl.appendChild(totalEl);
 }
-tableHead();
-
-
 
 function CookiesStore(location, minCustPerHour, maxCustPerHour, avgCookiesPerCust) {
   this.location = location;
@@ -65,6 +62,7 @@ function CookiesStore(location, minCustPerHour, maxCustPerHour, avgCookiesPerCus
     trEl.appendChild(totalTd);
   };
 }
+
 var firstAndPike = new CookiesStore('1st and Pike',23,65,6.3);
 var seatac = new CookiesStore('SeaTac Airport',3,24,1.2);
 var seattleCenter = new CookiesStore('Seattle Center',11,38,3.7);
@@ -72,10 +70,28 @@ var capitolHill = new CookiesStore('Capitol Hill',20,38,2.3);
 var alki = new CookiesStore('Alki',2,16,4.6);
 
 function genTable() {
+  gentableHead();
   firstAndPike.render();
   seatac.render();
   seattleCenter.render();
   capitolHill.render();
   alki.render();
 }
-genTable();
+
+function genFooter() {
+  genTable();
+  var trEl = document.createElement('tr');
+  tableUl.appendChild(trEl);
+  var tdEl = document.createElement('td');
+  tdEl.textContent = 'Totals Per Hour';
+  trEl.appendChild(tdEl);
+  for (var i = 0; i < hours.length; i++) {
+    var tdEl = document.createElement('td');
+    tdEl.textContent = '';
+    trEl.appendChild(tdEl);
+  }
+  var tdEl = document.createElement('td');
+  tdEl.textContent = '';
+  trEl.appendChild(tdEl);
+}
+genFooter();
