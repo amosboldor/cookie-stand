@@ -83,12 +83,11 @@ function handleForm(event) {
   event.preventDefault();
   var changeStore = false;
   var location = event.target.location.value;
-  var minCPH = event.target.minCPH.value;
-  var maxCPH = event.target.maxCPH.value;
-  var avgCPC = event.target.avgCPC.value;
+  var minCPH = parseInt(event.target.minCPH.value);
+  var maxCPH = parseInt(event.target.maxCPH.value);
+  var avgCPC = parseInt(event.target.avgCPC.value);
   for (var i = 0; i < stores.length; i++) {
     if (location === stores[i].location) {
-      console.log('yes');
       changeStore = true;
       stores[i].minCustPerHour = minCPH;
       stores[i].maxCustPerHour = maxCPH;
@@ -97,6 +96,7 @@ function handleForm(event) {
       event.target.minCPH.value = null;
       event.target.maxCPH.value = null;
       event.target.avgCPC.value = null;
+      stores[i].randCustPerHour = [];
       stores[i].cookiesSoldPerHour = [];
       stores[i].totalDailySales = 0;
       stores[i].calcTotalDailySales();
@@ -116,6 +116,7 @@ function handleForm(event) {
     tableUl.textContent = '';
     gentableHead();
     for (var j = 0; j < stores.length; j++) {
+      stores[j].randCustPerHour = [];
       stores[j].cookiesSoldPerHour = [];
       stores[j].calcTotalDailySales();
       stores[j].render();
