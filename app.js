@@ -5,6 +5,7 @@ var hours = ['6am ', '7am ', '8am ', '9am ', '10am ', '11am ', '12pm ', '1pm ', 
 var stores = [];
 
 var tableUl = document.createElement('table');
+var formEL = document.getElementById('form');
 document.body.appendChild(tableUl);
 
 function gentableHead() {
@@ -62,8 +63,8 @@ function CookiesStore(location, minCustPerHour, maxCustPerHour, avgCookiesPerCus
     var totalTd = document.createElement('td');
     totalTd.textContent = this.totalDailySales;
     trEl.appendChild(totalTd);
-    stores.push(this);
   };
+  stores.push(this);
 }
 
 // var stores = [
@@ -78,17 +79,36 @@ var seattleCenter = new CookiesStore('Seattle Center',11,38,3.7);
 var capitolHill = new CookiesStore('Capitol Hill',20,38,2.3);
 var alki = new CookiesStore('Alki',2,16,4.6);
 
-function genTable() {
+gentableHead();
+for (var i = 0; i < stores.length; i++) {
+  stores[i].render();
+}
+genFooter();
+
+function handleForm(event) {
+  event.preventDefault();
+  var location = event.target.location.value;
+  var minCPH = event.target.minCPH.value;
+  var maxCPH = event.target.maxCPH.value;
+  var avgCPC = event.target.avgCPC.value;
+  var newStore = new CookiesStore(location, minCPH, maxCPH, avgCPC);
+  event.target.location.value = null;
+  event.target.minCPH.value = null;
+  event.target.maxCPH.value = null;
+  event.target.avgCPC.value = null;
+  tableUl.textContent = '';
   gentableHead();
-  firstAndPike.render();
-  seatac.render();
-  seattleCenter.render();
-  capitolHill.render();
-  alki.render();
+  for (var i = 0; i < stores.length; i++) {
+    stores[i].cookiesSoldPerHour = [];
+    stores[i].render();
+  }
+  genFooter();
 }
 
+formEL.addEventListener('submit', handleForm);
+
 function genFooter() {
-  genTable();
+
   var trEl = document.createElement('tr');
   tableUl.appendChild(trEl);
   var tdEl = document.createElement('td');
@@ -100,7 +120,6 @@ function genFooter() {
     for (var j = 0; j < stores.length; j++) {
       totalSoldHour += stores[j].cookiesSoldPerHour[i];
     }
-    console.log(totalSoldHour);
     totalSold += totalSoldHour;
     var totalSoldPerHourEl = document.createElement('td');
     totalSoldPerHourEl.textContent = totalSoldHour;
@@ -110,4 +129,3 @@ function genFooter() {
   tdEl.textContent = totalSold;
   trEl.appendChild(tdEl);
 }
-genFooter();
