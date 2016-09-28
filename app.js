@@ -79,6 +79,13 @@ for (var i = 0; i < stores.length; i++) {
 }
 genFooter();
 
+function clearFormFields() {
+  event.target.location.value = null;
+  event.target.minCPH.value = null;
+  event.target.maxCPH.value = null;
+  event.target.avgCPC.value = null;
+}
+
 function handleForm(event) {
   event.preventDefault();
   var changeStore = false;
@@ -92,10 +99,7 @@ function handleForm(event) {
       stores[i].minCustPerHour = minCPH;
       stores[i].maxCustPerHour = maxCPH;
       stores[i].avgCookiesPerCust = avgCPC;
-      event.target.location.value = null;
-      event.target.minCPH.value = null;
-      event.target.maxCPH.value = null;
-      event.target.avgCPC.value = null;
+      clearFormFields();
       stores[i].randCustPerHour = [];
       stores[i].cookiesSoldPerHour = [];
       stores[i].totalDailySales = 0;
@@ -109,10 +113,7 @@ function handleForm(event) {
   }
   if (changeStore === false) {
     new CookiesStore(location, minCPH, maxCPH, avgCPC);
-    event.target.location.value = null;
-    event.target.minCPH.value = null;
-    event.target.maxCPH.value = null;
-    event.target.avgCPC.value = null;
+    clearFormFields();
     tableUl.textContent = '';
     gentableHead();
     for (var j = 0; j < stores.length; j++) {
