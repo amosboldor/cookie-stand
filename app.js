@@ -11,7 +11,8 @@ document.body.appendChild(tableUl);
 function gentableHead() {
   var trEl = document.createElement('tr');
   tableUl.appendChild(trEl);
-  var tdEl = document.createElement('td');
+  var tdEl = document.createElement('th');
+  tdEl.textContent = 'Location';
   trEl.appendChild(tdEl);
   for (var i = 0; i < hours.length; i++) {
     var thEl = document.createElement('th');
