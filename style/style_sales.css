@@ -1,0 +1,43 @@
+td,th {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+tr:hover {
+  background-color: #ff3399;
+  color: white;
+}
+th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #ff3399;
+    color: white;
+}
+input[type=text]:focus {
+    border: 3px solid #555;
+}
+button {
+  padding: 3px 6px;
+  font-size: 15px;
+  text-align: center;
+  cursor: pointer;
+  outline: none;
+  color: #fff;
+  background-color: #ff3399;
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 7px #999;
+}
+
+button:hover {background-color: #ff0080}
+
+button:active {
+  background-color: #ff3399;
+  box-shadow: 0 3px #666;
+  transform: translateY(4px);
+}
