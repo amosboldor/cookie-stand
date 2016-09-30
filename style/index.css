@@ -67,6 +67,9 @@ li a {
   width: 400px;
   height: 550px;
 }
+.p3>img {
+  width: 250px;
+}
 .mid {
   position: relative;
   border: 2px solid black;
@@ -104,7 +107,7 @@ li a {
   top: 630px;
   left: -2px;
   width: 1400px;
-  height: 280px;
+  height: 170px;
   margin-bottom: 30px;
   background-color: white;
   text-align: center;
