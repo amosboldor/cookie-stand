@@ -1,3 +1,30 @@
+.nav {
+  margin: 0 auto;
+  max-width: 455px;
+}
+ul {
+    list-style-type: none;
+    padding: 0;
+    border: 1px solid #e7e7e7;
+    background-color: #f3f3f3;
+    height: 45px;
+}
+li {
+    float: left;
+}
+li a {
+    display: block;
+    color: black;
+    text-align: center;
+    padding: 14px 16px;
+}
+li a:hover {
+  color: white;
+  background-color: #ff99cc;
+}
+li a {
+  background-color: #ff3399;
+}
 td,th {
     border: 1px solid #ddd;
     padding: 8px;
