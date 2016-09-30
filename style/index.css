@@ -104,7 +104,10 @@ li a {
   top: 630px;
   left: -2px;
   width: 1400px;
-  height: 600px;
+  height: 280px;
   margin-bottom: 30px;
   background-color: white;
+}
+.bot>img {
+  width: 200px
 }
