@@ -1,4 +1,11 @@
-.nav {
+body {
+  background-color: #ffb3e6;
+}
+table {
+  margin: 20px auto;
+  border:
+}
+nav {
   margin: 0 auto;
   max-width: 455px;
 }
